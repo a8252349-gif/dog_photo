@@ -1,0 +1,38 @@
+{
+  "name": "pet-id-photo-render",
+  "version": "1.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=20.9.0 <23"
+  },
+  "dependencies": {
+    "cloudinary": "^2.7.0",
+    "next": "16.2.9",
+    "openai": "^6.44.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "sharp": "^0.34.5",
+    "solapi": "^6.0.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "16.2.9",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
+  },
+  "packageManager": "npm@10.8.2"
+}

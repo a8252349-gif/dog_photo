@@ -1,0 +1,60 @@
+services:
+  - type: web
+    name: pet-id-photo
+    runtime: node
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20.20.1
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SITE_NAME
+        value: 증멍사진
+      - key: NEXT_PUBLIC_SMARTSTORE_URL
+        sync: false
+      - key: COUPON_MODE
+        value: demo
+      - key: ORDER_TOKEN_SECRET
+        generateValue: true
+      - key: SMARTSTORE_WEBHOOK_SECRET
+        generateValue: true
+      - key: AI_MODE
+        value: openai
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_IMAGE_MODEL
+        value: gpt-image-2
+      - key: OPENAI_IMAGE_QUALITY
+        value: high
+      - key: OPENAI_IMAGE_SIZE
+        value: 1024x1536
+      - key: AI_LOG_USAGE
+        value: true
+      - key: OPENAI_MAX_RETRIES
+        value: 3
+      - key: GENERATE_RATE_LIMIT_ENABLED
+        value: true
+      - key: GENERATE_RATE_LIMIT_MAX
+        value: 8
+      - key: GENERATE_RATE_LIMIT_WINDOW_MINUTES
+        value: 30
+      - key: COUPON_API_URL
+        sync: false
+      - key: COUPON_API_SECRET
+        sync: false
+      - key: STORY_API_URL
+        sync: false
+      - key: STORY_API_SECRET
+        sync: false
+      - key: STORY_ADMIN_PASSWORD
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
