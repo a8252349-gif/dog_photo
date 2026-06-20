@@ -110,23 +110,12 @@ export function MakeWizard({ demoCode }: { demoCode: string | null }) {
     }
   }
 
-  async function cancelGeneration() {
-    if (!generation) return;
-    await fetch("/api/order/release", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sessionToken: generation.sessionToken }),
-    }).catch(() => undefined);
-    setGeneration(null);
-  }
-
   if (generation) {
     return (
       <CaptionEditor
         imageDataUrl={generation.imageDataUrl}
         sessionToken={generation.sessionToken}
         defaultPetName={petName}
-        onCancel={cancelGeneration}
       />
     );
   }

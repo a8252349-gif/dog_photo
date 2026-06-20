@@ -257,12 +257,10 @@ export function CaptionEditor({
   imageDataUrl,
   sessionToken,
   defaultPetName,
-  onCancel,
 }: {
   imageDataUrl: string;
   sessionToken: string;
   defaultPetName: string;
-  onCancel: () => Promise<void>;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const draggingRef = useRef(false);
@@ -282,6 +280,8 @@ export function CaptionEditor({
     resultUrl?: string;
     resultDataUrl?: string;
     expiresAt?: string;
+    couponStatus?: string;
+    couponMessage?: string;
     previewDataUrl: string;
   } | null>(null);
   const [error, setError] = useState("");
@@ -421,6 +421,10 @@ export function CaptionEditor({
         <span className="result-panel__check">✓</span>
         <h2>제작 접수가 완료되었습니다.</h2>
         <p>디지털 파일은 바로 저장할 수 있으며, 인화 또는 액자 옵션은 스마트스토어 주문 정보에 따라 제작됩니다.</p>
+        <div className="coupon-confirmed">
+          <strong>✓ 이용권 사용 완료</strong>
+          <span>{result.couponMessage || "사용한 쿠폰은 다시 인증할 수 없도록 사용 완료 처리되었습니다."}</span>
+        </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={result.resultDataUrl || result.previewDataUrl}
@@ -668,9 +672,6 @@ export function CaptionEditor({
           <div className="button-stack">
             <button type="button" className="button" onClick={finalize} disabled={finalizing}>
               {finalizing ? "최종 저장 중..." : "이대로 최종 저장"}
-            </button>
-            <button type="button" className="button button--ghost" onClick={onCancel} disabled={finalizing}>
-              결과 취소하고 다시 만들기
             </button>
           </div>
         </div>
